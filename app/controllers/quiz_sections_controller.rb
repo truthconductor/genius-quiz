@@ -40,6 +40,7 @@ class QuizSectionsController < ApplicationController
   def destroy
     @quiz_section = QuizSection.find(params[:id])
     @quiz_section.destroy
+  end
 
   private
 
