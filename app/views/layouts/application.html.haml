@@ -9,7 +9,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %nav.navbar.navbar-expand-sm.navbar-dark.bg-app-primary.fixed-top
-      .navbar-brand GeniusQuiz
+      =link_to "GeniusQuiz", root_path, class:"navbar-brand"
       %button.navbar-toggler{type: "button",
       data:{toggle:"collapse", target:"#navmenu"},
       aria:{controls:"navmenu", expanded:"false", label:"Toggle navigation"}}
@@ -17,7 +17,7 @@
       .collapse.navbar-collapse#navmenu
         %ul.navbar-nav.ml-auto
           %li.nav-item
-            =link_to "問題を作る", "#", class: "nav-link"
+            =link_to "問題を作る", new_quiz_section_path, class: "nav-link"
           %li.nav-item
             =link_to "問題を探す", "#", class: "nav-link"
           %li.nav-item
