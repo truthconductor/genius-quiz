@@ -8,4 +8,19 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = yield
+    %nav.navbar.navbar-expand-sm.navbar-dark.bg-app-primary.fixed-top
+      =link_to "GeniusQuiz", root_path, class:"navbar-brand"
+      %button.navbar-toggler{type: "button",
+      data:{toggle:"collapse", target:"#navmenu"},
+      aria:{controls:"navmenu", expanded:"false", label:"Toggle navigation"}}
+        %span.navbar-toggler-icon
+      .collapse.navbar-collapse#navmenu
+        %ul.navbar-nav.ml-auto
+          %li.nav-item
+            =link_to "問題を作る", new_quiz_section_path, class: "nav-link"
+          %li.nav-item
+            =link_to "問題を探す", "#", class: "nav-link"
+          %li.nav-item
+            =link_to "ログイン", "#", class: "nav-link"
+    .container
+      = yield
