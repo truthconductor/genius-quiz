@@ -1,5 +1,5 @@
 class QuizSection < ApplicationRecord
   belongs_to :user
-  has_many :quizzes, dependent: :destroy
-  accepts_nested_attributes_for :quizzes
+  has_many :questions, dependent: :destroy
+  accepts_nested_attributes_for :questions
 end

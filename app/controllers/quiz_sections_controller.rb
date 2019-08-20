@@ -25,7 +25,7 @@ class QuizSectionsController < ApplicationController
   def new
     @quiz_section = QuizSection.new
     for order in 1..5 do
-      @quiz_section.quizzes.build(order: order, is_yes: true)
+      @quiz_section.questions.build(order: order, is_yes: true)
     end
   end
 
@@ -48,7 +48,7 @@ class QuizSectionsController < ApplicationController
 
   def section_params
     params.require(:quiz_section).permit(:title, :description, :image,
-      quizzes_attributes: [:id, :order, :sentence, :is_yes, :explanation])
+      questions_attributes: [:id, :order, :sentence, :is_yes, :explanation])
       .merge(user_id: current_user&.id)
   end
 

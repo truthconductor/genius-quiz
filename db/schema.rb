@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_17_092513) do
+ActiveRecord::Schema.define(version: 2019_08_20_131628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "questions", force: :cascade do |t|
+    t.integer "order", null: false
+    t.text "sentence", null: false
+    t.boolean "is_yes", null: false
+    t.text "explanation"
+    t.integer "correct_answer_counts", default: 0, null: false
+    t.integer "total_answer_counts", default: 0, null: false
+    t.bigint "quiz_section_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_section_id"], name: "index_questions_on_quiz_section_id"
+  end
 
   create_table "quiz_sections", force: :cascade do |t|
     t.string "title", limit: 30, null: false
@@ -28,19 +41,6 @@ ActiveRecord::Schema.define(version: 2019_08_17_092513) do
     t.index ["user_id"], name: "index_quiz_sections_on_user_id"
   end
 
-  create_table "quizzes", force: :cascade do |t|
-    t.integer "order", null: false
-    t.text "sentence", null: false
-    t.boolean "is_yes", null: false
-    t.text "explanation"
-    t.integer "correct_answer_counts", default: 0, null: false
-    t.integer "total_answer_counts", default: 0, null: false
-    t.bigint "quiz_section_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["quiz_section_id"], name: "index_quizzes_on_quiz_section_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -53,6 +53,6 @@ ActiveRecord::Schema.define(version: 2019_08_17_092513) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "questions", "quiz_sections"
   add_foreign_key "quiz_sections", "users"
-  add_foreign_key "quizzes", "quiz_sections"
 end
