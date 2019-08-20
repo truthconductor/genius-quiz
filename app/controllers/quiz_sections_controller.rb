@@ -1,5 +1,7 @@
 class QuizSectionsController < ApplicationController
 
+  before_action(:move_to_index, except: [:index, :show])
+
   def index
     @quiz_sections = QuizSection.all
   end
@@ -14,7 +16,7 @@ class QuizSectionsController < ApplicationController
   def update
     @quiz_section = QuizSection.find(params[:id])
     if @quiz_section.update(section_params)
-      redirect_to quiz_section_path
+      redirect_to quiz_sections_path
     else
       render :edit
     end
@@ -31,7 +33,7 @@ class QuizSectionsController < ApplicationController
     @quiz_section = QuizSection.new(section_params)
 
     if @quiz_section.save
-      redirect_to quiz_section_path
+      redirect_to quiz_sections_path
     else
       render :new
     end
@@ -47,5 +49,14 @@ class QuizSectionsController < ApplicationController
   def section_params
     params.require(:quiz_section).permit(:title, :description, :image,
       quizzes_attributes: [:id, :order, :sentence, :is_yes, :explanation])
+      .merge(user_id: current_user&.id)
   end
+
+  def move_to_index
+    #ログインしていない時indexアクションを強制的に実行する
+    unless user_signed_in?
+      redirect_to action: :index
+    end
+  end
+
 end
