@@ -1,3 +1,3 @@
 class Question < ApplicationRecord
-  belongs_to :quiz_section
+  belongs_to :quiz
 end

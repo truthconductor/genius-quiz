@@ -18,7 +18,7 @@
         %ul.navbar-nav.ml-auto
           %li.nav-item
             - if user_signed_in?
-              =link_to "問題を作る", new_quiz_section_path, class: "nav-link"
+              =link_to "問題を作る", new_quiz_path, class: "nav-link"
           %li.nav-item
             =link_to "問題を探す", "#", class: "nav-link"
           %li.nav-item
