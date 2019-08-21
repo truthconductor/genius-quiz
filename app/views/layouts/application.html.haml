@@ -17,10 +17,14 @@
       .collapse.navbar-collapse#navmenu
         %ul.navbar-nav.ml-auto
           %li.nav-item
-            =link_to "問題を作る", new_quiz_section_path, class: "nav-link"
+            - if user_signed_in?
+              =link_to "問題を作る", new_quiz_path, class: "nav-link"
           %li.nav-item
             =link_to "問題を探す", "#", class: "nav-link"
           %li.nav-item
-            =link_to "ログイン", "#", class: "nav-link"
+            - unless user_signed_in?
+              =link_to "ログイン", new_user_session_path, class: "nav-link"
+            - else
+              =link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link"
     .container
       = yield

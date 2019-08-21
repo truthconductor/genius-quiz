@@ -1,0 +1,24 @@
+= form_with model: quiz, local: true do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: "form-control", id: "title"
+  .form-group
+    = f.label :description
+    = f.text_area :description, rows: 3, class: "form-control", id: "description"
+  = f.fields_for :questions, quiz.questions do |question|
+    %h3
+      ="第#{question.index + 1}問"
+      = question.hidden_field :order
+    .form-group
+      = question.label :sentence
+      = question.text_field :sentence, class: "form-control"
+    .form-group
+      %label Answer
+      = question.radio_button :is_yes, "true"
+      = question.label(:is_yes, "○", value: "true")
+      = question.radio_button :is_yes, "false"
+      = question.label(:is_yes, "×", value: "false")
+    .form-group
+      = question.label :explanation
+      = question.text_field :explanation, class: "form-control"
+  = f.submit nil, class: "btn btn-primary"
