@@ -10,11 +10,15 @@ class QuizForm
   attr_reader :questions_attributes
 
   def questions
-    @questions_attributes ||= DEFAULT_QUESTION_COUNT.times.map {|i| Question.new(order: i+1) }
+    @questions_attributes ||= DEFAULT_QUESTION_COUNT.times.map {|i| Question.new(order: i+1, is_yes: true) }
   end
 
   def questions_attributes=(attributes)
-    @questions_attributes = Employee.new(attributes)
+    @questions_attributes = []
+    attributes.each do |key, value|
+      @questions_attributes << Question.new(value)
+    end
+    # @questions_attributes = Question.new(attributes)
   end
 
   attr_accessor :title,
@@ -28,11 +32,10 @@ class QuizForm
     Quiz.new(title: title, description: description, image: image, user_id: user_id)
   end
 
-  def save
+  def save?
     # バリデーションに引っかかる場合は以降の処理には行かせaずfalseをコントローラーに返します
     return false if invalid?
-
-    quiz.assign_attributes(quizparams)
+    quiz.assign_attributes(quiz_params)
     build_asscociations
 
     if quiz.save
