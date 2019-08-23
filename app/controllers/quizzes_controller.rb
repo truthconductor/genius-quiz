@@ -23,16 +23,12 @@ class QuizzesController < ApplicationController
   end
 
   def new
-    @quiz = Quiz.new
-    for order in 1..5 do
-      @quiz.questions.build(order: order, is_yes: true)
-    end
+    @quiz = QuizForm.new
   end
 
   def create
-    @quiz = Quiz.create(quiz_params)
-
-    if @quiz.valid?
+    @quiz = QuizForm.new(quiz_params)
+    if @quiz.save?
       redirect_to quizzes_path
     else
       render :new

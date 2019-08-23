@@ -43,7 +43,7 @@ gem "devise"
 gem "haml-rails"
 
 # bootstrap
-gem 'bootstrap'
+gem 'bootstrap', ">= 4.3.1"
 # Bootstrap JavaScript depends on jQuery
 gem 'jquery-rails'
 
