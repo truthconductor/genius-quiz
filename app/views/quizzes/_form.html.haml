@@ -1,24 +1,26 @@
 = form_with model: quiz, local: true do |f|
-  
-  .form-group
-    = f.label :title
-    = f.text_field :title, class: "form-control", id: "title"
-  .form-group
-    = f.label :description
-    = f.text_area :description, rows: 3, class: "form-control", id: "description"
+  .p-2
+    .form-group
+      = f.label :title
+      = f.text_field :title, class: "form-control", id: "title"
+    .form-group
+      = f.label :description
+      = f.text_area :description, rows: 3, class: "form-control", id: "description"
   = f.fields_for :questions do |question|
-    ="第#{question.object.order}問"
-    = question.hidden_field :order
-    .form-group
-      = question.label :sentence
-      = question.text_area :sentence, rows: 2, class: "form-control"
-    .form-group
-      %label Answer
-      = question.radio_button :is_yes, "true"
-      = question.label(:is_yes, "○", value: "true")
-      = question.radio_button :is_yes, "false"
-      = question.label(:is_yes, "×", value: "false")
-    .form-group
-      = question.label :explanation
-      = question.text_area :explanation, rows: 2, class: "form-control"
+    .p-2
+      %h2.my-2
+        ="第#{question.object.order}問"
+      = question.hidden_field :order
+      .form-group
+        = question.label :sentence
+        = question.text_area :sentence, rows: 3, class: "form-control"
+      .form-group
+        %label 答え
+        = question.radio_button :is_yes, "true", class:"ml-2"
+        = question.label(:is_yes, "○", value: "true")
+        = question.radio_button :is_yes, "false", class:"ml-2"
+        = question.label(:is_yes, "×", value: "false")
+      .form-group
+        = question.label :explanation
+        = question.text_area :explanation, rows: 3, class: "form-control"
   = f.submit nil, class: "btn btn-primary"

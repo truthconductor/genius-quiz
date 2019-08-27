@@ -9,3 +9,4 @@
         =link_to "挑戦する", "#", class: "btn btn-primary"
       - else
         =link_to "編集する", edit_quiz_path(quiz), class: "btn btn-info"
+        =link_to "削除する", quiz, method: :delete, data: { confirm: "クイズ「#{quiz.title}」を削除します。よろしいですか？"}, class: "btn btn-danger"
