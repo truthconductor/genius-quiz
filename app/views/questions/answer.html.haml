@@ -1,0 +1,17 @@
+- if @is_correct
+  %h2
+    = "正解です"
+- else
+  %h2
+    = "不正解です"
+%h3.my-1
+  ="第#{@question.order}問"
+.question.border.shadow.p-2
+  =simple_format(@question.sentence)
+%h3.my-1
+  ="解説"
+.question.border.shadow.p-2.mb-3
+  =simple_format(@question.explanation)
+
+- if @is_correct
+  = link_to "次の問題へ", quiz_question_path(@next_question.quiz, @next_question), class: "btn btn-primary"
