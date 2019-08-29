@@ -1,0 +1,16 @@
+%h2.mb-3
+  =@question.quiz.title
+%h3.my-1
+  ="第#{@question.order}問"
+.question.border.shadow.p-2
+  =simple_format(@question.sentence)
+
+%h3.my-1
+  ="答えは？"
+= form_with scope: :post, url: answer_quiz_question_path, local: true do |f|
+  .form-group
+    = f.radio_button :answer, "true", class:"ml-2", checked: true
+    = f.label(:answer, "○", value: "true")
+    = f.radio_button :answer, "false", class:"ml-2"
+    = f.label(:answer, "×", value: "false")
+  = f.submit "解答する", class: "btn btn-primary"

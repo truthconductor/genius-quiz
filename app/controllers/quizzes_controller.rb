@@ -3,7 +3,7 @@ class QuizzesController < ApplicationController
   before_action(:move_to_index, except: [:index, :show])
 
   def index
-    @quizzes = Quiz.all
+    @quizzes = Quiz.all.order(updated_at: :desc)
   end
 
   def show
