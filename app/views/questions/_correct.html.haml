@@ -1,0 +1,14 @@
+%h2.mb-3
+  = "やったね！正解"
+%h3.my-1
+  ="第#{question.order}問"
+.question.border.shadow.p-2
+  =simple_format(question.sentence)
+%h3.my-1
+  ="解説"
+.question.border.shadow.p-2.mb-3
+  =simple_format(question.explanation)
+- if next_question
+  = link_to "次の問題へ", quiz_question_path(next_question.quiz, next_question), class: "btn btn-primary"
+- else
+  = link_to "トップに戻る", root_path, class: "btn btn-primary"
