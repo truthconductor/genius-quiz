@@ -1,3 +1,38 @@
 .question {
   background: $app-question;
 }
+
+.form-group {
+  #post_answer_true {
+    display: none;
+  }
+  #post_answer_true:checked + #answerbox--yes {
+    border: 3px solid $yes-foreground
+  }
+
+  #post_answer_false {
+    display: none;
+  }
+
+  #post_answer_false:checked + #answerbox--no{
+    border: 3px solid $no-foreground;
+  }
+
+  div {
+    font-size: 3rem;
+    #answerbox--yes {
+      box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.4);
+      color: $yes-foreground;
+      background: $no-foreground;
+      text-align: center;
+      display: block;
+    }
+    #answerbox--no {
+      box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.4);
+      color: $no-foreground;
+      background: $yes-foreground;
+      text-align: center;
+      display: block;
+    }
+  }
+}

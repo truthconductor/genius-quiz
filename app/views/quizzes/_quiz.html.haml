@@ -5,10 +5,10 @@
         = quiz.title
       =simple_format(quiz.description, class: "card-text")
       -if quiz.user.id != current_user&.id
-        =link_to "挑戦する", quiz_question_path(quiz,quiz.questions[0]), class: "btn btn-primary"
+        =link_to "挑戦する", quiz_question_path(quiz,quiz.questions[0]), class: "btn btn-primary mb-1"
       - else
-        =link_to "お試し", quiz_question_path(quiz,quiz.questions[0]), class: "btn btn-primary"
-        =link_to "修正する", edit_quiz_path(quiz), class: "btn btn-info"
-        =link_to "削除する", quiz, method: :delete, data: { confirm: "クイズ「#{quiz.title}」を削除します。よろしいですか？"}, class: "btn btn-danger"
+        =link_to "お試し", quiz_question_path(quiz,quiz.questions[0]), class: "btn btn-primary mb-1"
+        =link_to "修正する", edit_quiz_path(quiz), class: "btn btn-info mb-1"
+        =link_to "削除する", quiz, method: :delete, data: { confirm: "クイズ「#{quiz.title}」を削除します。よろしいですか？"}, class: "btn btn-danger mb-1"
     .card-footer
       = "挑戦者数:#{quiz.question_times}, 全問正解者数:#{quiz.genius_times}(#{quiz.genius_rate}%)"
