@@ -21,6 +21,7 @@
         = render partial: "form_error_messages", locals: { model: question.object, symbol: :sentence }
         = question.text_area :sentence, rows: 3, class: "form-control", placeholder: "問題文を入力してください(例:パンダのしっぽは黒い？)"
       .form-group
+        = render partial: "form_error_messages", locals: { model: question.object, symbol: :is_yes }
         %label 正解
         = question.radio_button :is_yes, "true", class:"ml-2"
         = question.label(:is_yes, "○", value: "true")
@@ -28,5 +29,6 @@
         = question.label(:is_yes, "×", value: "false")
       .form-group
         = question.label :explanation
+        = render partial: "form_error_messages", locals: { model: question.object, symbol: :explanation }
         = question.text_area :explanation, rows: 3, class: "form-control", placeholder: "正しい答えの解説を書いてください"
   = f.submit nil, class: "btn btn-primary"

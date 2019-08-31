@@ -23,6 +23,7 @@ ja:
         order: 出題順
         sentence: 問題文
         explanation: 解説
+        is_yes: 解答
         created_at: 作成日時
         updated_at: 更新日時
   date:
