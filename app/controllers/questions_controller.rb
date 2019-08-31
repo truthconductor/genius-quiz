@@ -5,8 +5,7 @@ class QuestionsController < ApplicationController
 
   def answer
     #解答チェック
-    user_answer = answer_params[:answer] == "true" ? true : false
-
+    user_answer = ActiveRecord::Type::Boolean.new.cast(answer_params[:answer])
     #悲観的ロック
     Question.transaction do
       #問題

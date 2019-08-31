@@ -10,15 +10,9 @@
 = form_with scope: :post, url: answer_quiz_question_path, local: true do |f|
   .form-group.row
     .col-lg-3.col-md-4.col-sm-6.col-xs-12
-      = f.radio_button :answer, "true", checked: true
-      = f.label(:answer, "○", value: "true", id: "answerbox--yes")
+      = f.radio_button :answer, true, checked: true
+      = f.label(:answer, "○", value: true, id: "answerbox--yes")
     .col-lg-3.col-md-4.col-sm-6.col-xs-12
-      = f.radio_button :answer, "false"
-      = f.label(:answer, "×", value: "false", id:"answerbox--no")
-    -# = f.radio_button :answer, "true", class:"ml-2", checked: true
-    -# = f.label(:answer, "○", value: "true",
-    -#   id:"answeryes", class:"border shadow my-1 col-lg-3 col-md-4 col-sm-5 col-xs-12")
-    -# = f.radio_button :answer, "false", class:"ml-2"
-    -# = f.label(:answer, "×", value: "false",
-    -#   id:"answerno", class:"border shadow my-1 col-lg-3 col-md-4 col-sm-5 col-xs-12")
+      = f.radio_button :answer, false
+      = f.label(:answer, "×", value: false, id:"answerbox--no")
   = f.submit "解答する", class: "btn btn-primary"
