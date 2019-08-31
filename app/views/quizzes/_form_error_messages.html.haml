@@ -1,5 +1,5 @@
 - if model.errors[symbol].present?
   %ul.list-group.my-1
     - model.errors.full_messages_for(symbol).each do |message|
-      %li.list-group-item.list-group-item-danger
+      %li.list-group-item.list-group-item-warning
         = message

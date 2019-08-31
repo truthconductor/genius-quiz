@@ -1,3 +1,6 @@
+- if quiz.errors.present?
+  .alert.alert-warning
+    入力内容に抜け・謝りがあります！
 = form_with model: quiz, local: true do |f|
   .p-2
     .form-group
@@ -25,5 +28,5 @@
         = question.label(:is_yes, "×", value: "false")
       .form-group
         = question.label :explanation
-        = question.text_area :explanation, rows: 3, class: "form-control", placeholder: "正しい答えの補足説明を書いてください"
+        = question.text_area :explanation, rows: 3, class: "form-control", placeholder: "正しい答えの解説を書いてください"
   = f.submit nil, class: "btn btn-primary"
