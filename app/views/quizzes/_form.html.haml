@@ -1,10 +1,19 @@
+-# - if quiz.errors.present?
+-#   .alert.alert-danger 
+-#     %ul#error_explanation
+-#       - quiz.errors.full_messages.each do |message|
+-#         %li 
+-#           = message
+
 = form_with model: quiz, local: true do |f|
   .p-2
     .form-group
       = f.label :title
+      = render partial: "form_error_messages", locals: { model: @quiz, symbol: :title }
       = f.text_field :title, class: "form-control", id: "title"
     .form-group
       = f.label :description
+      = render partial: "form_error_messages", locals: { model: @quiz, symbol: :description }
       = f.text_area :description, rows: 3, class: "form-control", id: "description"
   = f.fields_for :questions do |question|
     .p-2

@@ -31,6 +31,7 @@ class QuizzesController < ApplicationController
 
   def create
     @quiz = Quiz.new(quiz_params)
+
     if @quiz.save
       redirect_to quizzes_path
     else
