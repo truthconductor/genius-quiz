@@ -19,8 +19,8 @@
   }
 
   div {
-    font-size: 3rem;
     #answerbox--yes {
+      font-size: 3rem;
       box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.4);
       color: $yes-foreground;
       background: $no-foreground;
@@ -28,6 +28,7 @@
       display: block;
     }
     #answerbox--no {
+      font-size: 3rem;
       box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.4);
       color: $no-foreground;
       background: $yes-foreground;
