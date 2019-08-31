@@ -1,20 +1,13 @@
--# - if quiz.errors.present?
--#   .alert.alert-danger 
--#     %ul#error_explanation
--#       - quiz.errors.full_messages.each do |message|
--#         %li 
--#           = message
-
 = form_with model: quiz, local: true do |f|
   .p-2
     .form-group
       = f.label :title
       = render partial: "form_error_messages", locals: { model: @quiz, symbol: :title }
-      = f.text_field :title, class: "form-control", id: "title"
+      = f.text_field :title, class: "form-control", id: "title", placeholder: "クイズ名を入力してください(例:○○クイズ)"
     .form-group
       = f.label :description
       = render partial: "form_error_messages", locals: { model: @quiz, symbol: :description }
-      = f.text_area :description, rows: 3, class: "form-control", id: "description"
+      = f.text_area :description, rows: 3, class: "form-control", id: "description", placeholder: "説明欄に表示される内容を入力してください(例:○○に関するクイズです)"
   = f.fields_for :questions do |question|
     .p-2
       %h2.my-2
@@ -22,7 +15,8 @@
       = question.hidden_field :order
       .form-group
         = question.label :sentence
-        = question.text_area :sentence, rows: 3, class: "form-control"
+        = render partial: "form_error_messages", locals: { model: question.object, symbol: :sentence }
+        = question.text_area :sentence, rows: 3, class: "form-control", placeholder: "問題文を入力してください(例:パンダのしっぽは黒い？)"
       .form-group
         %label 正解
         = question.radio_button :is_yes, "true", class:"ml-2"
@@ -31,5 +25,5 @@
         = question.label(:is_yes, "×", value: "false")
       .form-group
         = question.label :explanation
-        = question.text_area :explanation, rows: 3, class: "form-control"
+        = question.text_area :explanation, rows: 3, class: "form-control", placeholder: "正しい答えの補足説明を書いてください"
   = f.submit nil, class: "btn btn-primary"
