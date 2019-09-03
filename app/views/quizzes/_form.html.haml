@@ -31,4 +31,4 @@
         = question.label :explanation
         = render partial: "form_error_messages", locals: { model: question.object, symbol: :explanation }
         = question.text_area :explanation, rows: 3, class: "form-control", placeholder: "正しい答えの解説を書いてください"
-  = f.submit nil, class: "btn btn-primary"
+  = f.submit nil, class: "btn btn-block btn-primary"

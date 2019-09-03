@@ -1,12 +1,11 @@
 %h3.my-2
   答えは？
 .row
-  - if @question.is_yes
-    .col-lg-3.col-md-4.col-sm-6.col-12.my-2
+  .col-lg-4.col-md-5.col-sm-6.col-12.my-2
+    - if @question.is_yes
       #resultbox--yes
         ○
-  - else
-    .col-lg-3.col-md-4.col-sm-6.col-12.my-2
+    - else
       #resultbox--no
         ×
 - if @is_correct
