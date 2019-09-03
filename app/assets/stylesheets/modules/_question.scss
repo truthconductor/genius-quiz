@@ -21,7 +21,7 @@
   div {
     #answerbox--yes {
       font-size: 3rem;
-      box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.4);
+      box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.35);
       color: $yes-foreground;
       background: $no-foreground;
       text-align: center;
@@ -29,11 +29,29 @@
     }
     #answerbox--no {
       font-size: 3rem;
-      box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.4);
+      box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.35);
       color: $no-foreground;
       background: $yes-foreground;
       text-align: center;
       display: block;
     }
   }
+}
+
+#resultbox--yes {
+  font-size: 3rem;
+  box-shadow: 0rem 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+  color: $yes-foreground;
+  background: $no-foreground;
+  text-align: center;
+  display: block;
+}
+
+#resultbox--no {
+  font-size: 3rem;
+  box-shadow: 0rem 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+  color: $no-foreground;
+  background: $yes-foreground;
+  text-align: center;
+  display: block;
 }
