@@ -1,4 +1,14 @@
+%h3.my-2
+  答えは？
+.row
+  .col-lg-4.col-md-5.col-sm-6.col-12.my-2
+    - if @question.is_yes
+      #resultbox--yes
+        ○
+    - else
+      #resultbox--no
+        ×
 - if @is_correct
-  = render partial: "correct", locals: { quiz: @quiz, question: @question, next_question: @next_question}
+  = render partial: "correct", locals: { question: @question, next_question: @next_question}
 - else
-  = render partial: "incorrect", locals: { quiz: @quiz, question: @question }
+  = render partial: "incorrect", locals: { question: @question }
