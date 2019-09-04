@@ -18,22 +18,31 @@
       .collapse.navbar-collapse#navmenu
         %ul.navbar-nav.ml-auto
           %li.nav-item
-            - if user_signed_in?
-              =link_to new_quiz_path, class: "nav-link" do
-                =icon('fas', 'marker')
-                クイズを作る
+            =link_to new_quiz_path, class: "nav-link" do
+              =icon('fas', 'marker')
+              クイズを作る
           %li.nav-item
             =link_to "#", class: "nav-link" do
               =icon('fas', 'search')
               クイズを探す
-          %li.nav-item
-            - unless user_signed_in?
-              =link_to new_user_session_path, class: "nav-link" do
-                =icon('fas', 'sign-in-alt')
-                ログイン
-            - else
-              =link_to destroy_user_session_path, method: :delete, class: "nav-link" do
-                =icon('fas', 'sign-out-alt')
-                ログアウト
+          %li.nav-item.dropdown
+            =link_to "#", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", data:{toggle:"dropdown"}, aria:{haspopup:"true", expanded:"false"}do
+              =icon('fas', 'users')
+              ユーザー
+            .dropdown-menu.dropdown-menu-right{aria:{labelledby:"navbarDropdown"}}
+              - unless user_signed_in?
+                =link_to new_user_session_path, class: "dropdown-item" do
+                  =icon('fas', 'sign-in-alt')
+                  ログイン
+                =link_to new_user_registration_path, class: "dropdown-item" do
+                  =icon('fas', 'signature')
+                  新規登録
+              - else
+                =link_to "#", class: "dropdown-item" do
+                  =icon('fas', 'user')
+                  マイページ
+                =link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do
+                  =icon('fas', 'sign-out-alt')
+                  ログアウト
     .container.mb-3
       = yield
