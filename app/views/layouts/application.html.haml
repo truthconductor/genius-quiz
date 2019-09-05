@@ -38,7 +38,7 @@
                   =icon('fas', 'signature')
                   新規登録
               - else
-                =link_to "#", class: "dropdown-item" do
+                =link_to user_path(current_user), class: "dropdown-item" do
                   =icon('fas', 'user')
                   マイページ
                 =link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do
