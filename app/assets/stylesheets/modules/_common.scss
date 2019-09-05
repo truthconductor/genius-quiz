@@ -6,3 +6,15 @@ body {
 nav.bg-app-primary {
   background-color: $app-primary;
 };
+
+.btn-twitter {
+  color: #fff;
+  background-color: #1da1f2;
+  border-color: #a9dcfa;
+}
+
+.btn-twitter:hover {
+  color: #fff;
+  background-color: #1a90d9;
+  border-color: #a9dcfa;
+}
