@@ -1,6 +1,7 @@
 class QuizzesController < ApplicationController
 
-  before_action(:move_to_index, except: [:index, :show])
+  #ログインしていない場合ログインページへ移動する
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @quizzes = Quiz.all.includes([:user, :questions]).order(updated_at: :desc)
@@ -10,11 +11,11 @@ class QuizzesController < ApplicationController
   end
 
   def edit
-    @quiz = Quiz.find(params[:id])
+    find_quiz_params_id
   end
 
   def update
-    @quiz = Quiz.find(params[:id])
+    find_quiz_params_id
     if @quiz.update(quiz_params)
       redirect_to quizzes_path
     else
@@ -31,7 +32,6 @@ class QuizzesController < ApplicationController
 
   def create
     @quiz = Quiz.new(quiz_params)
-
     if @quiz.save
       redirect_to quizzes_path
     else
@@ -40,24 +40,24 @@ class QuizzesController < ApplicationController
   end
 
   def destroy
-    @quiz = Quiz.find(params[:id])
+    find_quiz_params_id
     @quiz.destroy
     redirect_to quizzes_path
   end
 
   private
 
+  def find_quiz_params_id
+    @quiz = Quiz.find(params[:id])
+    if @quiz.user.id != current_user&.id
+      redirect_to action: :index
+    end
+  end
+
   def quiz_params
     params.require(:quiz).permit(:title, :description, :image,
       questions_attributes: [:id, :order, :sentence, :is_yes, :explanation])
       .merge(user_id: current_user&.id)
-  end
-
-  def move_to_index
-    #ログインしていない時indexアクションを強制的に実行する
-    unless user_signed_in?
-      redirect_to action: :index
-    end
   end
 
 end

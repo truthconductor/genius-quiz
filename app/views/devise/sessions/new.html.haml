@@ -1,5 +1,8 @@
 = render "devise/shared/links"
 %h2 ログイン
+= link_to user_twitter_omniauth_authorize_path, class: "btn btn-block btn-twitter my-2 py-2" do
+  = icon('fab', 'twitter')
+  Twitterアカウントでログイン
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .field.form-group
     = f.label :email
