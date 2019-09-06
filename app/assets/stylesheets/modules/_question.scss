@@ -7,7 +7,7 @@
     display: none;
   }
   #post_answer_true:checked + #answerbox--yes {
-    border: 3px solid $yes-foreground
+    border: 0.25rem solid $yes-foreground
   }
 
   #post_answer_false {
@@ -15,7 +15,7 @@
   }
 
   #post_answer_false:checked + #answerbox--no{
-    border: 3px solid $no-foreground;
+    border: 0.25rem  solid #ffc107;
   }
 
   div {
