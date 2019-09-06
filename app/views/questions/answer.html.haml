@@ -1,13 +1,20 @@
-%h3.my-2
-  答えは？
-.row
-  .col-lg-4.col-md-5.col-sm-6.col-12.my-2
+.row.align-items-center.my-2
+  .col-lg-3.col-md-3.col-sm-4.col-12.my-2
+    %h3.float-lg-right.float-md-right.float-sm-right
+      答えは？
+  .col-lg-6.col-md-6.col-sm-4.col-12.my-2
     - if @question.is_yes
       #resultbox--yes
         ○
     - else
       #resultbox--no
         ×
+  .col-lg-3.col-md-3.col-sm-4.col-12.my-2
+    %h3
+      - if @is_correct
+        正解！
+      - else
+        残念！
 - if @is_correct
   = render partial: "correct", locals: { question: @question, next_question: @next_question}
 - else

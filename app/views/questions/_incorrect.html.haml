@@ -1,5 +1,3 @@
-%h2.mb-3
-  = "残念！不正解"
 %h3.my-2
   ="第#{question.order}問"
 .question.border.shadow.p-2
@@ -8,4 +6,4 @@
   ="解説"
 .question.border.shadow.p-2.mb-3
   =simple_format(question.explanation)
-= link_to "トップに戻る", root_path, class: "btn btn-primary"
+= render partial: "result"
