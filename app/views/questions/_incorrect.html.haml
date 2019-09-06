@@ -6,4 +6,4 @@
   ="解説"
 .question.border.shadow.p-2.mb-3
   =simple_format(question.explanation)
-= render partial: "result"
+= render partial: "result", locals: { question: question, complete: false }

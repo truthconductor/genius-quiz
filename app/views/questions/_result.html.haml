@@ -1,1 +1,9 @@
+%h1
+  結果発表
+.border.bg-white.py-2.my-3
+  %p.text-danger.text-center.display-4
+    - if complete
+      全問正解！
+    - else
+      = "#{question.order}問目脱落"
 = link_to "トップに戻る", root_path, class: "btn btn-block btn-primary"

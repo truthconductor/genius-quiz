@@ -4,9 +4,9 @@
   =simple_format(question.sentence)
 %h3.my-2
   ="解説"
-.question.border.shadow.p-2.mb-3
+.question.border.shadow.p-2.mb-4
   =simple_format(question.explanation)
 - if next_question
   = link_to "次の問題へ", quiz_question_path(next_question.quiz, next_question), class: "btn btn-block btn-primary"
 - else
-  = render partial: "result"
+  = render partial: "result", locals: { question: question, complete: true }

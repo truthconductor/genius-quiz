@@ -30,7 +30,7 @@
     }
     #answerbox--no {
       font-size: 3rem;
-      padding-bottom: 1rem;
+      padding-bottom: 0.5rem;
       box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.35);
       color: $no-foreground;
       background: $yes-foreground;
@@ -84,7 +84,7 @@
 
 #resultbox--no {
   font-size: 3rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   box-shadow: 0rem 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
   color: $no-foreground;
   background: $yes-foreground;
