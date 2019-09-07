@@ -1,7 +1,4 @@
-%h3.my-2
-  ="第#{question.order}問"
-.question.border.shadow.p-2
-  =simple_format(question.sentence)
+= render partial: "question", locals: { question: question }
 %h3.my-2
   ="解説"
 .question.border.shadow.p-2.mb-3
